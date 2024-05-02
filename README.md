@@ -1,95 +1,68 @@
-Certainly! Here's the updated README file with Java installation before Jenkins:
-
 ---
 
-# Node.js Application Deployment Guide
+# Running the Node.js Application Locally
 
-This guide will walk you through the steps to deploy a Node.js application using Docker and Jenkins on an AWS Ubuntu instance.
+This guide will walk you through the steps to run the Node.js application on your local machine.
 
 ## Prerequisites
 
-Before starting, ensure you have the following:
+Before starting, ensure you have the following installed on your system:
 
-- AWS Ubuntu instance up and running.
-- Access to the instance via SSH.
-- Docker installed on the AWS Ubuntu instance.
-- Java installed on the AWS Ubuntu instance.
-- Jenkins installed on the AWS Ubuntu instance.
+- Node.js: Download and install from [nodejs.org](https://nodejs.org/)
+- Git: Download and install from [git-scm.com](https://git-scm.com/)
 
-## Step 1: Install Java
+## Steps
 
-Connect to your AWS Ubuntu instance via SSH and install Java using the following commands:
+1. **Clone the Repository:**
 
-```bash
-sudo apt update
-sudo apt install default-jdk
-```
+   Open your terminal and run the following command to clone the repository:
 
-Verify the Java installation:
+   ```bash
+   git clone https://github.com/Shubham-Stunner/basic_nodejs_webpage.git
+   ```
 
-```bash
-java -version
-```
+2. **Navigate to the Project Directory:**
 
-## Step 2: Install Jenkins
+   Change into the project directory:
 
-Install Jenkins by adding its official repository to your system:
+   ```bash
+   cd basic_nodejs_webpage
+   ```
 
-```bash
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-```
+3. **Install Dependencies:**
 
-Update your package index and install Jenkins:
+   Install the required dependencies using npm:
 
-```bash
-sudo apt update
-sudo apt install jenkins
-```
+   ```bash
+   npm install
+   ```
 
-Start the Jenkins service:
+4. **Run the Application:**
 
-```bash
-sudo systemctl start jenkins
-```
+   Start the Node.js application:
 
-Enable Jenkins to start on boot:
+   ```bash
+   npm start
+   ```
 
-```bash
-sudo systemctl enable jenkins
-```
+5. **Access the Application:**
 
-## Step 3: Install Docker
+   Once the application has started, open your web browser and go to:
 
-If Docker is not already installed, you can follow these steps to install it:
+   ```
+   http://localhost:8081
+   ```
 
-```bash
-sudo apt update
-sudo apt install docker.io
-```
+   You should now see the Node.js application running locally on your machine.
 
-Start the Docker service:
+6. **Stopping the Application:**
 
-```bash
-sudo systemctl start docker
-```
+   To stop the application, press `Ctrl + C` in the terminal where the application is running.
 
-Enable Docker to start on boot:
+## Additional Notes
 
-```bash
-sudo systemctl enable docker
-```
+- The application will be running on port 8081 by default. If you need to change the port, you can modify it in the `server.js` file.
+- Make sure no other application is using port 8081 on your system before starting the Node.js application.
 
-Replace the placeholder stages with the corresponding stages from your Jenkinsfile.
+---
 
-## Step 5: Deploy the Node.js Application
-
-Execute your Jenkins pipeline to deploy the Node.js application:
-
-1. Navigate to your Jenkins dashboard.
-2. Select your project/job.
-3. Click on "Build Now" to trigger the pipeline.
-4. Monitor the pipeline stages for any errors or failures.
-5. Once the pipeline completes successfully, access your Node.js application at the AWS Ubuntu instance's public IP address and port 8081.
-
-That's it! You have successfully deployed your Node.js application using Docker and Jenkins on an AWS Ubuntu instance.
